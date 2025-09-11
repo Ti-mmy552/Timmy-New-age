@@ -87,6 +87,7 @@ img{
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+  z-index: 99;
 }
 #themeSwitch img:first-child{
   display: none;
@@ -109,7 +110,7 @@ ul li{
   text-decoration: none;
   list-style-type: none;
   text-align: center;
-  padding: 7px 5%;
+  padding: 3px 2%;
 }
 .footer-copyright{
   width: 100%;
@@ -118,4 +119,48 @@ ul li{
   bottom: 0px;
   left: 0px;
   background: var(--base-variant);
+}
+.icons{
+  display: flex;
+  padding: 20px 10%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+.icons a{
+  font-size: 12px;
+  
+}
+.icons a::before{
+  content: attr(data-social);
+  position: absolute;
+  color: var(--text-color);
+  background: var(--icon-color);
+  text-decoration: none;
+  padding: 0.3em 0.5em;
+  border-radius: 100px;
+  transform: translateY(-10px) rotate(30deg);
+  opacity: 0;
+  transition: 200ms cubic-bezier(.42, 0, .44, 1.68);
+}
+.icons a::after{
+  content: "";
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 6px solid var(--icon-color);
+  top: 0px;
+  transform: translateX(-23px);
+  opacity: 0;
+  transition: 200ms cubic-bezier(.42, 0, .44, 1.68);
+}
+.icons a:hover::before{
+  transform: translateY(-40px) translateX(10px) rotate(0deg);
+  opacity: 1;
+}
+.icons a:hover::after{
+  transform: translateX(-23px);
+  opacity: 1;
 }
